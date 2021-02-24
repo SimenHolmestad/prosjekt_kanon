@@ -53,4 +53,29 @@ public class test : MonoBehaviour
         }
         
     }
+
+        public void IncreaseSpeedtest()
+    {
+        if(!isMoving)
+        {
+            totalTime = 0;
+            initSpeed += 0.1f;
+            Debug.Log("Speed is increased to: "+initSpeed);
+        }
+    }
+
+    public void DecreaseSpeedtest()
+    {
+        if(!isMoving)
+        {
+            if(initSpeed <= 0.1f)
+            {
+                Debug.Log("Speed cannot be decreased any more, your speed is: "+initSpeed);
+                return;
+            }
+            totalTime = 0;
+            initSpeed -= 0.1f;
+            Debug.Log("Speed is decreased to: "+initSpeed);
+        }
+    }
 }
