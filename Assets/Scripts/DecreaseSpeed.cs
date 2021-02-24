@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DecreaseSpeed : MonoBehaviour
 {
-    public test testSpeed;
+    public KanonKule testSpeed;
 
     private void OnMouseDown()
     {
