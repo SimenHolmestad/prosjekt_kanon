@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System; 
 
 public class test : MonoBehaviour
 {
     private bool isMoving = false;
     private float totalTime = 0.0f;
-    private float speed = 1.0f;
+    private float initSpeed = 15f; // Initial speed in m/s
+    private float initAngleDeg = 90f; // Initial angle in degrees
+    private float gravConst = 9.81f;
     private Vector3 startPos;
 
     // Start is called before the first frame update
@@ -17,8 +20,11 @@ public class test : MonoBehaviour
 
     Vector3 CalculateRelativePosition(float totalTime) 
     {
-        // Til Michael: Fiks denne
-        return new Vector3(totalTime * speed, 0, 0);
+        // How do we only calculate these once? Maybe calculate before passing to class? 
+        float initAngleRad = initAngleDeg * (float)Math.PI / 180f;
+        float initSpeed_x = initSpeed * (float)Math.Cos(initAngleRad);
+        float initSpeed_y = initSpeed * (float)Math.Sin(initAngleRad);
+        return new Vector3(totalTime * initSpeed_x, totalTime * initSpeed_y - gravConst * (float)Math.Pow(totalTime, 2) / 2, 0);
     }
 
     // Set the new position of the object based on the result of CalculateRelativePosition
@@ -36,8 +42,15 @@ public class test : MonoBehaviour
         {
             isMoving = !isMoving;
         }
-        if (isMoving) {
+        if (isMoving) 
+        {
             PlaceObject();
+            
+            if(gameObject.transform.position.y <= 0f)
+            {
+                isMoving = false;
+            }
         }
+        
     }
 }
