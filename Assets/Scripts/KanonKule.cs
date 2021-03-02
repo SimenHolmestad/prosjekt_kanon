@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System; 
 
-public class KanonKule : MonoBehaviour
+public class KanonKule : MonoBehaviour, CannonStateObserver
 {
     private bool isMoving = false;
     private float totalTime = 0.0f;
@@ -12,12 +12,19 @@ public class KanonKule : MonoBehaviour
     private float gravConst = 9.81f;
     private float initSpeed_y; 
     private Vector3 startPos;
+    public CannonStateHandler stateHandler;
 
+    public void applyChange(CannonState state){
+        this.initSpeed = state.speed;
+        this.initAngleDeg = state.verticalAngle;
+        Debug.Log("Speed is now " + this.initSpeed);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         startPos = gameObject.transform.position;
+        stateHandler.subscribe(this);
     }
 
     Vector3 CalculateRelativePosition(float totalTime) 

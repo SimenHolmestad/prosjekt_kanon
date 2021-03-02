@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class DecreaseSpeed : MonoBehaviour
 {
-    public KanonKule testSpeed;
+    public CannonStateHandler stateHandler;
+
+    private void decreaseSpeed(float increment_value) {
+        CannonState state = stateHandler.getCannonState();
+        state.speed -= increment_value;
+        stateHandler.setCannonState(state);
+    }
 
     private void OnMouseDown()
     {
-        testSpeed.DecreaseSpeedtest();
+        this.decreaseSpeed(1.0f);
     }
 }

@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5fc96c2dd1bd948afce758c0f0e9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testSpeed: {fileID: 1862363002}
+  stateHandler: {fileID: 1604641596}
 --- !u!136 &558812853
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -649,6 +649,62 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+--- !u!1 &1604641595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1604641597}
+  - component: {fileID: 1604641596}
+  - component: {fileID: 1604641598}
+  m_Layer: 0
+  m_Name: CanonStateObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1604641596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604641595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc931e091bb94d8baf3f88e6fbb1399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1604641597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604641595}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.12, y: 1.35, z: -9.77}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1604641598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604641595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc931e091bb94d8baf3f88e6fbb1399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1862363001
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb9203df63b7a264d89f9dd927633487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateHandler: {fileID: 1604641596}
 --- !u!135 &1862363003
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -787,7 +844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816b9fe6015a13a408ca53dabb295fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testSpeed: {fileID: 1862363002}
+  stateHandler: {fileID: 1604641596}
 --- !u!136 &2099782387
 CapsuleCollider:
   m_ObjectHideFlags: 0
