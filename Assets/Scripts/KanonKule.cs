@@ -14,13 +14,16 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
     public CannonStateHandler stateHandler;
 
     private bool reLoading = false;
-    private float reloadOffset = 5; // Reloading starting hight (y-axis)
+    private float reloadOffset = 4; // Reloading starting hight (y-axis)
     private Vector3 reloadPos;
 
     public void applyChange(CannonState state){
-        this.initSpeed = state.speed;
-        this.initAngleDeg = state.verticalAngle;
-        Debug.Log("Speed is now " + this.initSpeed);
+        if (!isMoving) 
+        {
+            this.initSpeed = state.speed;
+            this.initAngleDeg = state.verticalAngle;
+            Debug.Log("Speed is now " + this.initSpeed);
+        }
     }
 
     // Start is called before the first frame update
@@ -30,6 +33,14 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
         reloadPos = startPos + new Vector3(0, reloadOffset, 0);
         stateHandler.subscribe(this);
         this.applyChange(this.stateHandler.getCannonState());
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        UpdateCannonPosition();
+
+        UpdateReloadPosition();
     }
 
     Vector3 CalculateRelativePosition(float totalTime) 
@@ -57,14 +68,16 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
         gameObject.transform.position = startFFPos + freeFallMovement;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Shoot()
     {
-        // Shoot
-        if(Input.GetKeyDown(KeyCode.F) && (gameObject.transform.position == startPos)) 
+        if(gameObject.transform.position == startPos) 
         {
-            isMoving = !isMoving;
+            isMoving = true;
         }
+    }
+
+    private void UpdateCannonPosition()
+    {
         if (isMoving) 
         {
             PlaceObject();
@@ -74,13 +87,19 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
                 isMoving = false;
                 totalTime = 0;
             }
-        }        
+        }    
+    }
 
-        // Reload
-        if(Input.GetKeyDown(KeyCode.R) && !isMoving && (gameObject.transform.position.x != startPos.x))
+    public void Reload()
+    {
+        if(!isMoving && (gameObject.transform.position.x != startPos.x))
         {
             reLoading = true;
         }
+    }
+
+    private void UpdateReloadPosition()
+    {
         if (reLoading)
         {
             FreeFall(reloadPos);
