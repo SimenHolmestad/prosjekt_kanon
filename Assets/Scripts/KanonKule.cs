@@ -7,12 +7,15 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
 {
     private bool isMoving = false;
     private float totalTime = 0.0f;
-    private float initSpeed = 15f; // Initial speed in m/s
-    private float initAngleDeg = 60f; // Initial angle in degrees
+    private float initSpeed; // Initial speed in m/s
+    private float initAngleDeg; // Initial angle in degrees
     private float gravConst = 9.81f;
-    private float initSpeed_y; 
     private Vector3 startPos;
     public CannonStateHandler stateHandler;
+
+    private bool reLoading = false;
+    private float reloadOffset = 5; // Reloading starting hight (y-axis)
+    private Vector3 reloadPos;
 
     public void applyChange(CannonState state){
         this.initSpeed = state.speed;
@@ -24,7 +27,9 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
     void Start()
     {
         startPos = gameObject.transform.position;
+        reloadPos = startPos + new Vector3(0, reloadOffset, 0);
         stateHandler.subscribe(this);
+        this.applyChange(this.stateHandler.getCannonState());
     }
 
     Vector3 CalculateRelativePosition(float totalTime) 
@@ -44,10 +49,19 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
         gameObject.transform.position = startPos + movement;
     }
 
+    // Sets the position of the object based on gravity alone. Input: starting position (constant)
+    private void FreeFall(Vector3 startFFPos)
+    {
+        totalTime += Time.deltaTime;
+        Vector3 freeFallMovement = new Vector3(0, -gravConst*(float)Math.Pow(totalTime,2)/2, 0);
+        gameObject.transform.position = startFFPos + freeFallMovement;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) 
+        // Shoot
+        if(Input.GetKeyDown(KeyCode.F) && (gameObject.transform.position == startPos)) 
         {
             isMoving = !isMoving;
         }
@@ -58,33 +72,25 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
             if(gameObject.transform.position.y <= 0f)
             {
                 isMoving = false;
+                totalTime = 0;
             }
-        }
-        
-    }
+        }        
 
-        public void IncreaseSpeedtest()
-    {
-        if(!isMoving)
+        // Reload
+        if(Input.GetKeyDown(KeyCode.R) && !isMoving && (gameObject.transform.position.x != startPos.x))
         {
-            totalTime = 0;
-            initSpeed += 0.1f;
-            Debug.Log("Speed is increased to: "+initSpeed);
+            reLoading = true;
         }
-    }
-
-    public void DecreaseSpeedtest()
-    {
-        if(!isMoving)
+        if (reLoading)
         {
-            if(initSpeed <= 0.1f)
+            FreeFall(reloadPos);
+
+            if(gameObject.transform.position.y <= 0f)
             {
-                Debug.Log("Speed cannot be decreased any more, your speed is: "+initSpeed);
-                return;
+                gameObject.transform.position = startPos;
+                reLoading = false;
+                totalTime = 0;
             }
-            totalTime = 0;
-            initSpeed -= 0.1f;
-            Debug.Log("Speed is decreased to: "+initSpeed);
         }
     }
 }
