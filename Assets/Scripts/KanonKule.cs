@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System; 
+using UnityEngine.UI;
 
 public class KanonKule : MonoBehaviour, CannonStateObserver
 {
+    public CannonStateHandler stateHandler;
+    public Text speedText;
+
     private bool isMoving = false;
     private float totalTime = 0.0f;
     private float initSpeed; // Initial speed in m/s
     private float initAngleDeg; // Initial angle in degrees
     private float gravConst = 9.81f;
     private Vector3 startPos;
-    public CannonStateHandler stateHandler;
 
     private bool reLoading = false;
     private float reloadOffset = 4; // Reloading starting hight (y-axis)
@@ -22,7 +25,8 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
         {
             this.initSpeed = state.speed;
             this.initAngleDeg = state.verticalAngle;
-            Debug.Log("Speed is now " + this.initSpeed);
+            speedText.text = "Starthastighet: " + this.initSpeed;
+            //Debug.Log("Speed is now " + this.initSpeed);
         }
     }
 

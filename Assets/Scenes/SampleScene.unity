@@ -569,7 +569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateHandler: {fileID: 1604641596}
-  speedText: {fileID: 2008007349}
 --- !u!136 &558812853
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -639,7 +638,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558812851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.28, y: 1.13, z: 2.35}
+  m_LocalPosition: {x: 3.28, y: 1.13, z: 2.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1248,6 +1247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateHandler: {fileID: 1604641596}
+  speedText: {fileID: 2008007349}
 --- !u!135 &1862363003
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1391,7 +1391,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Starthastighet: 15'
+  m_Text: 'Starthastighet: '
 --- !u!222 &2008007350
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1433,7 +1433,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateHandler: {fileID: 1604641596}
-  speedText: {fileID: 2008007349}
 --- !u!136 &2099782387
 CapsuleCollider:
   m_ObjectHideFlags: 0
