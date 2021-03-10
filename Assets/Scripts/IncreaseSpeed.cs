@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class IncreaseSpeed : MonoBehaviour
+public class IncreaseSpeed : MonoBehaviour, IPointerClickHandler
 {
     public CannonStateHandler stateHandler;
 
@@ -13,6 +14,11 @@ public class IncreaseSpeed : MonoBehaviour
     }
 
     private void OnMouseDown()
+    {
+        this.increaseSpeed(1.0f);
+    }
+
+    public void OnPointerClick(PointerEventData pointerEventData)
     {
         this.increaseSpeed(1.0f);
     }
