@@ -6,14 +6,17 @@ using UnityEngine.EventSystems;
 public class Reload : MonoBehaviour, IPointerClickHandler
 {
     public KanonKule kanonKule;
+    public CannonStateHandler stateHandler;
 
     private void OnMouseDown()
     {
-        kanonKule.Reload();
+        this.kanonKule.Reload();
+        this.stateHandler.resetLevel();
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        kanonKule.Reload();
+        this.kanonKule.Reload();
+        this.stateHandler.resetLevel();
     }
 }

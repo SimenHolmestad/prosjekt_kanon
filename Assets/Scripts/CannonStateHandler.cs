@@ -6,10 +6,12 @@ public class CannonStateHandler : MonoBehaviour
 {
     private CannonState cannonState;
     private List<CannonStateObserver> observers;
+    private LevelHandler levelHandler;
     void Start()
     {
-        this.cannonState = new CannonState();
         this.observers = new List<CannonStateObserver>();
+        this.levelHandler = new LevelHandler();
+        this.resetLevel();
     }
 
     public void subscribe(CannonStateObserver observer){
@@ -30,5 +32,26 @@ public class CannonStateHandler : MonoBehaviour
         this.cannonState = state;
         this.notifyObservers();
     }
-}
 
+    public void resetLevel() {
+        this.setCannonState(this.levelHandler.getCurrentLevelState());
+    }
+
+    public void goToNextLevel() {
+        int level_number = this.levelHandler.getCurrentLevelNumber();
+        this.levelHandler.goToNextLevel();
+        int next_level_number = this.levelHandler.getCurrentLevelNumber();
+        if (level_number != next_level_number){
+            this.resetLevel();
+        }
+    }
+
+    public void goToPreviousLevel() {
+        int level_number = this.levelHandler.getCurrentLevelNumber();
+        this.levelHandler.goToPreviousLevel();
+        int next_level_number = this.levelHandler.getCurrentLevelNumber();
+        if (level_number != next_level_number){
+            this.resetLevel();
+        }
+    }
+}
