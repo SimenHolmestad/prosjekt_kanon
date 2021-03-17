@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kanonKule: {fileID: 1862363002}
+  stateHandler: {fileID: 1604641596}
 --- !u!65 &66474638
 BoxCollider:
   m_ObjectHideFlags: 0
