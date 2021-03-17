@@ -6,18 +6,25 @@ public class CannonState
     public float height = 0.0f;
     public float horizontalAngle = 0.0f;
     public float verticalAngle = 60.0f;
+    public float goalXPosition = 10.0f;
+    public float goalYPosition = 0.0f;
     public float speed = 15.0f;
+
     public string levelName = "";
-    // TODO:
-    // Må legge til flere variabler her etterhvert, for eksempel
-    // - Oppgavenavn
-    // - BildeURL
-    // - Om vinkelen er låst
-    // - Om starthastigheten er låst
-    // - Om målet er låst i x-retning
-    // - Om målet er låst i y-retning
-    // - O.s.v...
-    // - Egentlig burde dette objektet inneholde alt
-    // - Trenger kanskje fasit-verdier her også? Disse kan jo genereres fra oppgavene???
-    // - Fasitene burde gjøres slik at de er ints (helst)
+    public string taskImagePath = "";
+    public bool isThreeD = false;
+
+    public bool speedIsLocked = true;
+    public bool horizontalAngleIsLocked = true;
+    public bool verticalAngleIsLocked = true;
+    public bool heightIsLocked = true;
+    public bool xPositionIsLocked = true;
+    public bool yPositionIsLocked = true;
+
+    public float heightSolution = 0.0f;
+    public float horizontalAngleSolution = 0.0f;
+    public float verticalAngleSolution = 60.0f;
+    public float goalXPositionSolution = 10.0f;
+    public float goalYPositionSolution = 0.0f;
+    public float speedSolution = 15.0f;
 }
