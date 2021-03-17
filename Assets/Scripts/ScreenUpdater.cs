@@ -15,9 +15,9 @@ public class ScreenUpdater : MonoBehaviour, CannonStateObserver
 
     void Start()
     {
-        this.stateHandler.subscribe(this);
-        this.applyChange(this.stateHandler.getCannonState());
-
         speedText = GameObject.Find("Display_speed").GetComponent<Text>();
+
+        stateHandler.subscribe(this);
+        this.applyChange(this.stateHandler.getCannonState());
     }
 }

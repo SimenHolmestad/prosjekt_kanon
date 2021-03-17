@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System; 
-using UnityEngine.UI;
 
 public class KanonKule : MonoBehaviour, CannonStateObserver
 {
     public CannonStateHandler stateHandler;
-    public Text speedText;
 
     private bool isMoving = false;
     private float totalTime = 0.0f;
@@ -25,8 +23,6 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
         {
             this.initSpeed = state.speed;
             this.initAngleDeg = state.verticalAngle;
-            speedText.text = "Starthastighet: " + this.initSpeed;
-            //Debug.Log("Speed is now " + this.initSpeed);
         }
     }
 

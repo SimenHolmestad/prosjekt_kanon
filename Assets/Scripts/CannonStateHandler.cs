@@ -7,7 +7,7 @@ public class CannonStateHandler : MonoBehaviour
     private CannonState cannonState;
     private List<CannonStateObserver> observers;
     private LevelHandler levelHandler;
-    void Start()
+    void Awake()
     {
         this.observers = new List<CannonStateObserver>();
         this.levelHandler = new LevelHandler();
