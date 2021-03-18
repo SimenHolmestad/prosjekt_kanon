@@ -1008,6 +1008,10 @@ GameObject:
   - component: {fileID: 686738633}
   - component: {fileID: 686738632}
   - component: {fileID: 686738636}
+  - component: {fileID: 686738637}
+  - component: {fileID: 686738638}
+  - component: {fileID: 686738639}
+  - component: {fileID: 686738640}
   m_Layer: 5
   m_Name: Display_values
   m_TagString: Untagged
@@ -1108,11 +1112,67 @@ MonoBehaviour:
   m_GameObject: {fileID: 686738631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3367794cf934e7d86435111026072b, type: 3}
+  m_Script: {fileID: 11500000, guid: fef51503ff69efc42b369751552e0046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateHandler: {fileID: 1604641596}
   speedText: {fileID: 2008007349}
+--- !u!114 &686738637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686738631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc41e85322d9e49479d37b10484132e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateHandler: {fileID: 1604641596}
+  verticalAngleText: {fileID: 1710119735}
+--- !u!114 &686738638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686738631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d74152351bd2424e962034d88cfb782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateHandler: {fileID: 1604641596}
+  horizontalAngleText: {fileID: 1562069060}
+--- !u!114 &686738639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686738631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d523be172c8c7a42b5d02e76c24ba44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateHandler: {fileID: 1604641596}
+  goalXPosText: {fileID: 1207409702}
+--- !u!114 &686738640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686738631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44051fac825fa0e40b6af7f3b80af00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateHandler: {fileID: 1604641596}
+  goalYPosText: {fileID: 1370639142}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,7 +2598,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateHandler: {fileID: 1604641596}
-  speedText: {fileID: 2008007349}
 --- !u!135 &1862363003
 SphereCollider:
   m_ObjectHideFlags: 0
