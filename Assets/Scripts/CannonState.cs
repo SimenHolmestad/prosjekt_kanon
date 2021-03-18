@@ -6,7 +6,7 @@ public class CannonState
     public float height = 0.0f;
     public float horizontalAngle = 0.0f;
     public float verticalAngle = 60.0f;
-    public float goalXPosition = 10.0f;
+    public float goalXPosition = 19.9f;
     public float goalYPosition = 0.0f;
     public float speed = 15.0f;
 
