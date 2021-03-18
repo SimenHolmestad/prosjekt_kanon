@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChangeSpeed : MonoBehaviour, IPointerClickHandler
+public class ChangeGoalXPosition : MonoBehaviour, IPointerClickHandler
 {
     public CannonStateHandler stateHandler;
 
@@ -11,24 +11,25 @@ public class ChangeSpeed : MonoBehaviour, IPointerClickHandler
     private float deltaValue;
 
     private float highestValue = 50.0f;
-    private float lowestValue = 5.0f;
+    private float lowestValue = 1.0f;
 
     private void changeSpeed(float increment_value) {
         CannonState state = stateHandler.getCannonState();
-        float newSpeed = state.speed + increment_value;
-        if (newSpeed >= this.lowestValue && newSpeed <= this.highestValue) 
-        {
-            state.speed = newSpeed;
+        float newXpos = state.goalXPosition + increment_value;
+        if (newXpos >= this.lowestValue && newXpos <= this.highestValue) {
+            state.goalXPosition = newXpos;
+            stateHandler.setCannonState(state);
         }
-        else if (newSpeed < this.lowestValue)
+        else if (newXpos < this.lowestValue)
         {
-            state.speed = this.lowestValue;
+            state.goalXPosition = this.lowestValue;
+            stateHandler.setCannonState(state);
         }
-        else if (newSpeed > this.highestValue)
+        else if (newXpos > this.highestValue)
         {
-            state.speed = this.highestValue;
+            state.goalXPosition = this.highestValue;
+            stateHandler.setCannonState(state);
         }
-        stateHandler.setCannonState(state);
     }
 
     private void OnMouseDown()
