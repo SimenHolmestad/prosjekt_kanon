@@ -15,7 +15,7 @@ public class ChangeSpeed : MonoBehaviour, IPointerClickHandler
 
     private void changeSpeed(float increment_value) {
         CannonState state = stateHandler.getCannonState();
-        float newSpeed = state.speed + this.deltaValue;
+        float newSpeed = state.speed + increment_value;
         if (newSpeed >= this.lowestValue && newSpeed <= this.highestValue) {
             state.speed = newSpeed;
             stateHandler.setCannonState(state);
