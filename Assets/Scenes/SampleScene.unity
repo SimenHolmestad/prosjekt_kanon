@@ -4976,7 +4976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d523be172c8c7a42b5d02e76c24ba44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateHandler: {fileID: 0}
+  stateHandler: {fileID: 1604641596}
 --- !u!1 &1217393513
 GameObject:
   m_ObjectHideFlags: 0
@@ -5494,7 +5494,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateHandler: {fileID: 0}
-  goalYPosText: {fileID: 0}
 --- !u!1 &1471795787
 GameObject:
   m_ObjectHideFlags: 0
@@ -6067,7 +6066,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateHandler: {fileID: 0}
-  horizontalAngleText: {fileID: 0}
 --- !u!1 &1576254783
 GameObject:
   m_ObjectHideFlags: 0
@@ -7402,7 +7400,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateHandler: {fileID: 1604641596}
-  verticalAngleText: {fileID: 0}
 --- !u!1 &1711466248
 GameObject:
   m_ObjectHideFlags: 0
