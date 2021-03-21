@@ -5493,7 +5493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44051fac825fa0e40b6af7f3b80af00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateHandler: {fileID: 0}
+  stateHandler: {fileID: 1604641596}
 --- !u!1 &1471795787
 GameObject:
   m_ObjectHideFlags: 0
@@ -6065,7 +6065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d74152351bd2424e962034d88cfb782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateHandler: {fileID: 0}
+  stateHandler: {fileID: 1604641596}
 --- !u!1 &1576254783
 GameObject:
   m_ObjectHideFlags: 0
