@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChangeGoalYPosition : MonoBehaviour, IPointerClickHandler
+public class ChangeGoalYPosition : MonoBehaviour, IPointerClickHandler, CannonStateObserver
 {
     public CannonStateHandler stateHandler;
 
@@ -40,5 +40,15 @@ public class ChangeGoalYPosition : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         this.changeSpeed(this.deltaValue);
+    }
+
+    public void applyChange(CannonState state){
+        gameObject.SetActive(!state.yPositionIsLocked);
+    }
+
+    void Start()
+    {
+        stateHandler.subscribe(this);
+        this.applyChange(this.stateHandler.getCannonState());
     }
 }

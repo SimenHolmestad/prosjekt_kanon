@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChangeVerticalAngle : MonoBehaviour, IPointerClickHandler
+public class ChangeVerticalAngle : MonoBehaviour, IPointerClickHandler, CannonStateObserver
 {
     public CannonStateHandler stateHandler;
 
@@ -39,5 +39,15 @@ public class ChangeVerticalAngle : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         this.changeHorizontalAngle(this.deltaValue);
+    }
+
+    public void applyChange(CannonState state){
+        gameObject.SetActive(!state.horizontalAngleIsLocked);
+    }
+
+    void Start()
+    {
+        stateHandler.subscribe(this);
+        this.applyChange(this.stateHandler.getCannonState());
     }
 }

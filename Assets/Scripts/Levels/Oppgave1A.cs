@@ -11,6 +11,7 @@ public class Oppgave1A : LevelInterface
         state.speed = (float)rnd.Next(10, 20);
         state.levelName = "Oppgave 1A";
         state.taskImagePath = "Images/hello-world";
+        state.xPositionIsLocked = false;
         return state;
     }
 }

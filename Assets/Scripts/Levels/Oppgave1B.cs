@@ -11,6 +11,14 @@ public class Oppgave1B : LevelInterface
         state.speed = (float)rnd.Next(100, 200);
         state.levelName = "Oppgave 1B";
         state.taskImagePath = "Images/SampleImage";
+
+        state.speedIsLocked = false;
+        state.horizontalAngleIsLocked = false;
+        state.verticalAngleIsLocked = false;
+        state.heightIsLocked = false;
+        state.xPositionIsLocked = false;
+        state.yPositionIsLocked = false;
+        state.isThreeD = true;
         return state;
     }
 }

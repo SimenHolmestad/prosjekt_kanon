@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChangeSpeed : MonoBehaviour, IPointerClickHandler
+public class ChangeSpeed : MonoBehaviour, IPointerClickHandler, CannonStateObserver
 {
     public CannonStateHandler stateHandler;
 
@@ -39,5 +39,15 @@ public class ChangeSpeed : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         this.changeSpeed(this.deltaValue);
+    }
+
+    public void applyChange(CannonState state){
+        gameObject.SetActive(!state.speedIsLocked);
+    }
+
+    void Start()
+    {
+        stateHandler.subscribe(this);
+        this.applyChange(this.stateHandler.getCannonState());
     }
 }
