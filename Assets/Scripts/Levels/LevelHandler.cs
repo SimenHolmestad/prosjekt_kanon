@@ -10,6 +10,7 @@ public class LevelHandler
 
         this.levels = new List<LevelInterface>();
         this.levels.Add(new Oppgave1A());
+        this.levels.Add(new Oppgave1B());
     }
 
     public int getCurrentLevelNumber() {
@@ -21,7 +22,7 @@ public class LevelHandler
     }
 
     public void goToNextLevel(){
-        if (this.currentLevelNumber < this.levels.Count) {
+        if (this.currentLevelNumber < this.levels.Count - 1) {
             this.currentLevelNumber += 1;
         }
     }

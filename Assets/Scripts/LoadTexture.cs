@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
  
-public class LoadTexture : MonoBehaviour {
-	Texture2D myTexture;
+public class LoadTexture : MonoBehaviour, CannonStateObserver
+{
+	private Texture2D myTexture;
+    public CannonStateHandler stateHandler;
+
+    public void applyChange(CannonState state){
+		myTexture = Resources.Load(state.taskImagePath) as Texture2D;
+		gameObject.GetComponent<RawImage>().texture = myTexture;
+    }
  
 	// Use this for initialization
 	void Start () {
-		// load texture from resource folder
-		myTexture = Resources.Load ("Images/hello-world") as Texture2D;
- 
-		GameObject rawImage = GameObject.Find ("RawImage");
-		rawImage.GetComponent<RawImage> ().texture = myTexture;
+        stateHandler.subscribe(this);
+        this.applyChange(this.stateHandler.getCannonState());
 	}
 }
