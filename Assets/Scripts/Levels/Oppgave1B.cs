@@ -8,7 +8,7 @@ public class Oppgave1B : LevelInterface
     {
         CannonState state = new CannonState();
         System.Random rnd = new System.Random();
-        state.speed = (float)rnd.Next(100, 200);
+        state.speed = (float)rnd.Next(10, 20);
         state.levelName = "Oppgave 1B";
         state.taskImagePath = "Images/SampleImage";
 

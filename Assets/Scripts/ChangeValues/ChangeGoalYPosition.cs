@@ -18,18 +18,16 @@ public class ChangeGoalYPosition : MonoBehaviour, IPointerClickHandler, CannonSt
         float newYpos = state.goalYPosition + increment_value;
         if (newYpos >= this.lowestValue && newYpos <= this.highestValue) {
             state.goalYPosition = newYpos;
-            stateHandler.setCannonState(state);
         }
         else if (newYpos < this.lowestValue)
         {
             state.goalYPosition = this.lowestValue;
-            stateHandler.setCannonState(state);
         }
         else if (newYpos > this.highestValue)
         {
             state.goalYPosition = this.highestValue;
-            stateHandler.setCannonState(state);
         }
+        stateHandler.setCannonState(state);
     }
 
     private void OnMouseDown()
