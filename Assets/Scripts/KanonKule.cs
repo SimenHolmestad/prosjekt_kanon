@@ -10,19 +10,25 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
     private bool isMoving = false;
     private float totalTime = 0.0f;
     private float initSpeed; // Initial speed in m/s
-    private float initAngleDeg; // Initial angle in degrees
+    private float initHorizontalAngleDeg; // Initial horizontal angle in degrees
+    private float initVerticalAngleDeg; // Initial vertical angle in degrees
+    private float cannonHeight; // Height of cannon in m/s
     private float gravConst = 9.81f;
     private Vector3 startPos;
 
     private bool reLoading = false;
-    private float reloadOffset = 4; // Reloading starting hight (y-axis)
+    private float reloadOffset = 10; // Reloading starting hight (y-axis)
     private Vector3 reloadPos;
 
     public void applyChange(CannonState state){
         if (!isMoving)
         {
             this.initSpeed = state.speed;
-            this.initAngleDeg = state.verticalAngle;
+            this.initVerticalAngleDeg = state.verticalAngle;
+            this.initHorizontalAngleDeg = state.horizontalAngle;
+            this.cannonHeight = state.height;
+            gameObject.transform.position = new Vector3(0f, cannonHeight, 0f);
+            startPos = gameObject.transform.position;
         }
     }
 
@@ -45,10 +51,12 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
 
     Vector3 CalculateRelativePosition(float totalTime)
     {
-        float initAngleRad = initAngleDeg * (float)Math.PI / 180f;
-        float initSpeed_y = initSpeed * (float)Math.Cos(initAngleRad);
-        float initSpeed_x = initSpeed * (float)Math.Sin(initAngleRad);
-        return new Vector3(totalTime * initSpeed_x, totalTime * initSpeed_y - gravConst * (float)Math.Pow(totalTime, 2) / 2, 0);
+        float initVerticalAngleRad = initVerticalAngleDeg * (float)Math.PI / 180f;
+        float initHorizontalAngleRad = initHorizontalAngleDeg * (float)Math.PI / 180f;
+        float initSpeed_x = initSpeed * (float)Math.Sin(initVerticalAngleRad) * (float)Math.Cos(initHorizontalAngleRad);
+        float initSpeed_y = initSpeed * (float)Math.Sin(initVerticalAngleRad) * (float)Math.Sin(initHorizontalAngleRad);
+        float initSpeed_z = initSpeed * (float)Math.Cos(initVerticalAngleRad);
+        return new Vector3(totalTime * initSpeed_x, totalTime * initSpeed_z - gravConst * (float)Math.Pow(totalTime, 2) / 2, totalTime * initSpeed_y);
     }
 
     // Set the new position of the object based on the result of CalculateRelativePosition
@@ -103,7 +111,7 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
         {
             FreeFall(reloadPos);
 
-            if(gameObject.transform.position.y <= 0f)
+            if(gameObject.transform.position.y <= cannonHeight)
             {
                 gameObject.transform.position = startPos;
                 reLoading = false;
