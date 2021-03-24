@@ -6,10 +6,10 @@ public class CannonState
     public float height = 0.0f;
     public float horizontalAngle = 0.0f;
     public float verticalAngle = 60.0f;
-    public float goalXPosition = 19.9f;
+    public float goalXPosition = 10.0f;
     public float goalYPosition = 0.0f;
     public float speed = 15.0f;
-
+    public float gravConst = 9.81f;
     public string levelName = "";
     public string taskImagePath = "";
     public bool isThreeD = false;
@@ -23,7 +23,8 @@ public class CannonState
 
     public float heightSolution = 0.0f;
     public float horizontalAngleSolution = 0.0f;
-    public float verticalAngleSolution = 60.0f;
+    public float verticalAngleSolution_1 = 60.0f;
+    public float verticalAngleSolution_2 = 60.0f;
     public float goalXPositionSolution = 10.0f;
     public float goalYPositionSolution = 0.0f;
     public float speedSolution = 15.0f;

@@ -42,7 +42,7 @@ public class ChangeVerticalAngle : MonoBehaviour, IPointerClickHandler, CannonSt
     }
 
     public void applyChange(CannonState state){
-        gameObject.SetActive(!state.horizontalAngleIsLocked);
+        gameObject.SetActive(!state.verticalAngleIsLocked);
     }
 
     void Start()

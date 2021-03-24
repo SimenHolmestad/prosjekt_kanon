@@ -11,6 +11,12 @@ public class LevelHandler
         this.levels = new List<LevelInterface>();
         this.levels.Add(new Oppgave1A());
         this.levels.Add(new Oppgave1B());
+        this.levels.Add(new Oppgave1C());
+        this.levels.Add(new Oppgave2A());
+        this.levels.Add(new Oppgave2B());
+        this.levels.Add(new Oppgave2C());
+        this.levels.Add(new Oppgave3A());
+        this.levels.Add(new Oppgave3B());
     }
 
     public int getCurrentLevelNumber() {

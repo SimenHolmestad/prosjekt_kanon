@@ -19,7 +19,7 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
     private Vector3 reloadPos;
 
     public void applyChange(CannonState state){
-        if (!isMoving) 
+        if (!isMoving)
         {
             this.initSpeed = state.speed;
             this.initAngleDeg = state.verticalAngle;
@@ -43,17 +43,16 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
         UpdateReloadPosition();
     }
 
-    Vector3 CalculateRelativePosition(float totalTime) 
+    Vector3 CalculateRelativePosition(float totalTime)
     {
-        // How do we only calculate these once? Maybe calculate before passing to class? 
         float initAngleRad = initAngleDeg * (float)Math.PI / 180f;
-        float initSpeed_y = initSpeed * (float)Math.Sin(initAngleRad);
-        float initSpeed_x = initSpeed * (float)Math.Cos(initAngleRad);
+        float initSpeed_y = initSpeed * (float)Math.Cos(initAngleRad);
+        float initSpeed_x = initSpeed * (float)Math.Sin(initAngleRad);
         return new Vector3(totalTime * initSpeed_x, totalTime * initSpeed_y - gravConst * (float)Math.Pow(totalTime, 2) / 2, 0);
     }
 
     // Set the new position of the object based on the result of CalculateRelativePosition
-    private void PlaceObject() 
+    private void PlaceObject()
     {
         totalTime += Time.deltaTime;
         Vector3 movement = CalculateRelativePosition(totalTime);
@@ -70,7 +69,7 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
 
     public void Shoot()
     {
-        if(gameObject.transform.position == startPos) 
+        if(gameObject.transform.position == startPos)
         {
             isMoving = true;
         }
@@ -78,16 +77,16 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
 
     private void UpdateCannonPosition()
     {
-        if (isMoving) 
+        if (isMoving)
         {
             PlaceObject();
-            
+
             if(gameObject.transform.position.y <= 0f)
             {
                 isMoving = false;
                 totalTime = 0;
             }
-        }    
+        }
     }
 
     public void Reload()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Oppgave1A : LevelInterface
 {
@@ -8,10 +9,15 @@ public class Oppgave1A : LevelInterface
     {
         CannonState state = new CannonState();
         System.Random rnd = new System.Random();
-        state.speed = (float)rnd.Next(10, 20);
         state.levelName = "Oppgave 1A";
-        state.taskImagePath = "Images/hello-world";
+        // Variable: x-position of goal
         state.xPositionIsLocked = false;
+        state.goalXPositionSolution = (float)rnd.Next(100, 400)/10;
+        // Given: (2D) vertical angle, speed
+        state.verticalAngle = (float)rnd.Next(30, 70);
+        state.speed = (float)Math.Sqrt(state.gravConst * state.goalXPositionSolution / (float)Math.Sin(2*state.verticalAngle * (float)Math.PI/180));
+        state.taskImagePath = "Images/hello-world";
+
         return state;
     }
 }
