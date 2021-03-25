@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
 public class ChangeSpeed : MonoBehaviour, IPointerClickHandler, CannonStateObserver
 {
@@ -28,6 +29,7 @@ public class ChangeSpeed : MonoBehaviour, IPointerClickHandler, CannonStateObser
         {
             state.speed = this.highestValue;
         }
+        state.speed = (float)Math.Round(state.speed, 1);
         stateHandler.setCannonState(state);
     }
 

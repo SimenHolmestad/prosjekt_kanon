@@ -17,8 +17,11 @@ public class Oppgave2B : LevelInterface
         state.horizontalAngleSolution = (float)rnd.Next(-45, 45);
         // Given: (3D) vertical angle, x- and y-position of goal
         state.verticalAngle = (float)rnd.Next(30, 70);
+        state.verticalAngleSolution_1 = state.verticalAngle;
         state.goalXPosition = (float)Math.Pow(state.speedSolution, 2) * (float)Math.Sin(2*state.verticalAngle * (float)Math.PI/180) * (float)Math.Cos(state.horizontalAngleSolution * (float)Math.PI/180) / state.gravConst;
+        state.goalXPositionSolution = state.goalXPosition;
         state.goalYPosition = (float)Math.Pow(state.speedSolution, 2) * (float)Math.Sin(2*state.verticalAngle * (float)Math.PI/180) * (float)Math.Sin(state.horizontalAngleSolution * (float)Math.PI/180) / state.gravConst;
+        state.goalYPositionSolution = state.goalYPosition;
         state.taskImagePath = "Images/SampleImage";
         state.isThreeD = true;
 
