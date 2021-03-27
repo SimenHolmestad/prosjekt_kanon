@@ -13,14 +13,14 @@ public class Oppgave2A : LevelInterface
         // Variable: x- and y-position of goal 
         state.xPositionIsLocked = false;
         state.yPositionIsLocked = false;
-        float tempAngle = (float)rnd.Next(-45, 45); 
+        float tempAngle = (float)rnd.Next(0, 90) - 45f; 
         float tempDist =  (float)rnd.Next(100, 350);
         state.goalXPositionSolution = (float)Math.Ceiling(tempDist * (float)Math.Cos(tempAngle * (float)Math.PI/180)) / 10;
         if (tempAngle < 0) { 
-            state.goalYPositionSolution = (float)Math.Ceiling(tempDist * (float)Math.Cos(tempAngle * (float)Math.PI/180)) / 10; 
+            state.goalYPositionSolution = (float)Math.Ceiling(tempDist * (float)Math.Sin(tempAngle * (float)Math.PI/180)) / 10; 
         }
         else {
-            state.goalYPositionSolution = (float)Math.Floor(tempDist * (float)Math.Cos(tempAngle * (float)Math.PI/180)) / 10;
+            state.goalYPositionSolution = (float)Math.Floor(tempDist * (float)Math.Sin(tempAngle * (float)Math.PI/180)) / 10;
         }
         // Given: (3D) horizontal angle, vertical angle, speed 
         state.horizontalAngle = (float)Math.Atan2(state.goalYPositionSolution, state.goalXPositionSolution) * 180/(float)Math.PI;

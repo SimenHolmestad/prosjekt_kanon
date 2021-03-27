@@ -17,7 +17,7 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
     private Vector3 startPos;
 
     private bool reLoading = false;
-    private float reloadOffset = 10; // Reloading starting hight (y-axis)
+    private float reloadOffset = 10; // Reloading starting height (y-axis)
     private Vector3 reloadPos;
 
     public void applyChange(CannonState state){
@@ -29,6 +29,7 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
             this.cannonHeight = state.height;
             gameObject.transform.position = new Vector3(0f, cannonHeight, 0f);
             startPos = gameObject.transform.position;
+            gameObject.transform.eulerAngles = new Vector3(initVerticalAngleDeg - 90f, 90f - initHorizontalAngleDeg, 0f); //might remove
         }
     }
 
@@ -59,12 +60,27 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
         return new Vector3(totalTime * initSpeed_x, totalTime * initSpeed_z - gravConst * (float)Math.Pow(totalTime, 2) / 2, totalTime * initSpeed_y);
     }
 
+    // Calculate Orientation of Cannon-Ball
+    Vector3 CalculateOrientation(float totalTime)
+    {
+        // Only need to cast to float in the end (can clean up elsewhere)
+        // Maybe move these out? Repeated in CalculateRelativePosition
+        float initVerticalAngleRad = initVerticalAngleDeg * (float)Math.PI / 180f;
+        float initHorizontalAngleRad = initHorizontalAngleDeg * (float)Math.PI / 180f;
+        float initSpeed_x = initSpeed * (float)Math.Sin(initVerticalAngleRad) * (float)Math.Cos(initHorizontalAngleRad);
+        float initSpeed_y = initSpeed * (float)Math.Sin(initVerticalAngleRad) * (float)Math.Sin(initHorizontalAngleRad);
+        float initSpeed_z = initSpeed * (float)Math.Cos(initVerticalAngleRad);
+        float radial_vel = (float)Math.Sqrt(Math.Pow(initSpeed_x, 2) + Math.Pow(initSpeed_y, 2));
+        return new Vector3((float)Math.Atan2(initSpeed_x, initSpeed_z - gravConst * totalTime) * 180/(float)Math.PI - 90f, 90f - initHorizontalAngleDeg, 0f);
+    }
+
     // Set the new position of the object based on the result of CalculateRelativePosition
     private void PlaceObject()
     {
         totalTime += Time.deltaTime;
         Vector3 movement = CalculateRelativePosition(totalTime);
         gameObject.transform.position = startPos + movement;
+        gameObject.transform.eulerAngles = CalculateOrientation(totalTime);
     }
 
     // Sets the position of the object based on gravity alone. Input: starting position (constant)
