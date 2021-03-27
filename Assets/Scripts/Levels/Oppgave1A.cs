@@ -15,9 +15,7 @@ public class Oppgave1A : LevelInterface
         state.goalXPositionSolution = (float)rnd.Next(100, 400)/10;
         // Given: (2D) vertical angle, speed
         state.verticalAngle = (float)rnd.Next(30, 70);
-        state.verticalAngleSolution_1 = state.verticalAngle;
         state.speed = (float)Math.Sqrt(state.gravConst * state.goalXPositionSolution / (float)Math.Sin(2*state.verticalAngle * (float)Math.PI/180));
-        state.speedSolution = state.speed;
         state.taskImagePath = "Images/hello-world";
 
         return state;

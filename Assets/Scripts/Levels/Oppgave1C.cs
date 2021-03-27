@@ -17,9 +17,7 @@ public class Oppgave1C : LevelInterface
         // NB! ^ requires theta_max > (90 - theta_min)
         // Given: (2D) speed, x-position of goal
         state.speed = (float)rnd.Next(100, 200)/10;
-        state.speedSolution = state.speed;
         state.goalXPosition = (float)Math.Pow(state.speed, 2) * (float)Math.Sin(2*state.verticalAngleSolution_1 * (float)Math.PI/180) / state.gravConst;
-        state.goalXPositionSolution = state.goalXPosition;
         state.taskImagePath = "Images/hello-world";
 
         return state;

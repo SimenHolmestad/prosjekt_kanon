@@ -19,11 +19,8 @@ public class Oppgave2C : LevelInterface
         // NB! ^ requires theta_max > (90 - theta_min)
         // Given: (3D) speed, x- and y-position of goal
         state.speed = (float)rnd.Next(100, 200)/10;
-        state.speedSolution = state.speed;
         state.goalXPosition = (float)Math.Pow(state.speed, 2) * (float)Math.Sin(2*state.verticalAngleSolution_1 * (float)Math.PI/180) * (float)Math.Cos(state.horizontalAngleSolution * (float)Math.PI/180) / state.gravConst;
-        state.goalXPositionSolution = state.goalXPosition;
         state.goalYPosition = (float)Math.Pow(state.speed, 2) * (float)Math.Sin(2*state.verticalAngleSolution_1 * (float)Math.PI/180) * (float)Math.Sin(state.horizontalAngleSolution * (float)Math.PI/180) / state.gravConst;
-        state.goalYPositionSolution = state.goalYPosition;
         state.taskImagePath = "Images/SampleImage";
         state.isThreeD = true;
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System;
 
 public class ChangeVerticalAngle : MonoBehaviour, IPointerClickHandler, CannonStateObserver
 {
@@ -29,7 +28,6 @@ public class ChangeVerticalAngle : MonoBehaviour, IPointerClickHandler, CannonSt
         {
             state.verticalAngle = this.highestValue;
         }
-        state.verticalAngle = (float)Math.Round(state.verticalAngle, 1);
         stateHandler.setCannonState(state);
     }
 
