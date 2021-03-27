@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
 public class ChangeGoalYPosition : MonoBehaviour, IPointerClickHandler, CannonStateObserver
 {
@@ -27,6 +28,7 @@ public class ChangeGoalYPosition : MonoBehaviour, IPointerClickHandler, CannonSt
         {
             state.goalYPosition = this.highestValue;
         }
+        state.goalYPosition = (float)Math.Round(state.goalYPosition, 1);
         stateHandler.setCannonState(state);
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
 public class ChangeHorizontalAngle : MonoBehaviour, IPointerClickHandler, CannonStateObserver
 {
@@ -28,6 +29,7 @@ public class ChangeHorizontalAngle : MonoBehaviour, IPointerClickHandler, Cannon
         {
             state.horizontalAngle = this.highestValue;
         }
+        state.horizontalAngle = (float)Math.Round(state.horizontalAngle, 1);
         stateHandler.setCannonState(state);
     }
 

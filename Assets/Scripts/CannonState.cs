@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class CannonState
 {
@@ -20,6 +21,7 @@ public class CannonState
     public bool heightIsLocked = true;
     public bool xPositionIsLocked = true;
     public bool yPositionIsLocked = true;
+    public bool hasLanded = false;
 
     public float heightSolution = 0.0f;
     public float horizontalAngleSolution = 0.0f;
@@ -28,4 +30,14 @@ public class CannonState
     public float goalXPositionSolution = 10.0f;
     public float goalYPositionSolution = 0.0f;
     public float speedSolution = 15.0f;
+
+    public bool isCorrect(){
+        return this.heightSolution == this.height &&
+               this.horizontalAngleSolution == this.horizontalAngle &&
+               (this.verticalAngleSolution_1 == this.verticalAngle ||
+               this.verticalAngleSolution_2 == this.verticalAngle) &&
+               this.goalXPositionSolution == this.goalXPosition &&
+               this.goalYPositionSolution == this.goalYPosition &&
+               this.speedSolution == this.speed;
+    }
 }

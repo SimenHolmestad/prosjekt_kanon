@@ -96,6 +96,7 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
         if(gameObject.transform.position == startPos)
         {
             isMoving = true;
+            this.setHasLanded(false);
         }
     }
 
@@ -105,12 +106,19 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
         {
             PlaceObject();
 
-            if(gameObject.transform.position.y <= 0f)
+            if(gameObject.transform.position.y < 0f)
             {
+                this.setHasLanded(true);
                 isMoving = false;
                 totalTime = 0;
             }
         }
+    }
+
+    private void setHasLanded(bool value) {
+        CannonState state = this.stateHandler.getCannonState();
+        state.hasLanded = value;
+        this.stateHandler.setCannonState(state);
     }
 
     public void Reload()

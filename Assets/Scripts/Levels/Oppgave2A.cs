@@ -24,8 +24,11 @@ public class Oppgave2A : LevelInterface
         }
         // Given: (3D) horizontal angle, vertical angle, speed 
         state.horizontalAngle = (float)Math.Atan2(state.goalYPositionSolution, state.goalXPositionSolution) * 180/(float)Math.PI;
+        state.horizontalAngleSolution = state.horizontalAngle;
         state.verticalAngle = (float)rnd.Next(30, 70);
+        state.verticalAngleSolution_1 = state.verticalAngle;
         state.speed = (float)Math.Sqrt(state.gravConst * state.goalXPositionSolution / ((float)Math.Sin(2*state.verticalAngle * (float)Math.PI/180) * (float)Math.Cos(state.horizontalAngle * (float)Math.PI/180)));
+        state.speedSolution = state.speed;
         state.taskImagePath = "Images/SampleImage";
         state.isThreeD = true;
         
