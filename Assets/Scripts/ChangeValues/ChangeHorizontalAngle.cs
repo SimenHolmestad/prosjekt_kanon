@@ -11,8 +11,8 @@ public class ChangeHorizontalAngle : MonoBehaviour, IPointerClickHandler, Cannon
     [SerializeField]
     private float deltaValue;
 
-    private float highestValue = 90.0f;
-    private float lowestValue = -90.0f;
+    private float highestValue = 45.0f;
+    private float lowestValue = -45.0f;
 
     private void changeHorizontalAngle(float increment_value) {
         CannonState state = stateHandler.getCannonState();
@@ -35,12 +35,20 @@ public class ChangeHorizontalAngle : MonoBehaviour, IPointerClickHandler, Cannon
 
     private void OnMouseDown()
     {
-        this.changeHorizontalAngle(this.deltaValue);
+        // Michael: added !hasLanded condition (and getCannonState)
+        CannonState state = stateHandler.getCannonState();
+        if(!state.hasLanded){ 
+            this.changeHorizontalAngle(this.deltaValue);
+        }
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        this.changeHorizontalAngle(this.deltaValue);
+        // Michael: added !hasLanded condition (and getCannonState)
+        CannonState state = stateHandler.getCannonState();
+        if(!state.hasLanded){ 
+            this.changeHorizontalAngle(this.deltaValue);
+        }
     }
 
     public void applyChange(CannonState state){

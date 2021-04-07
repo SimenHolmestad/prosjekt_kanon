@@ -21,7 +21,7 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
     private Vector3 reloadPos;
 
     public void applyChange(CannonState state){
-        if (!isMoving)
+        if (!isMoving && !state.hasLanded) // Michael: added !hasLanded condition
         {
             this.initSpeed = state.speed;
             this.initVerticalAngleDeg = state.verticalAngle;
@@ -29,7 +29,7 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
             this.cannonHeight = state.height;
             gameObject.transform.position = new Vector3(0f, cannonHeight, 0f);
             startPos = gameObject.transform.position;
-            gameObject.transform.eulerAngles = new Vector3(initVerticalAngleDeg - 90f, 90f - initHorizontalAngleDeg, 0f); //might remove
+            gameObject.transform.eulerAngles = new Vector3(initVerticalAngleDeg - 90f, 90f - initHorizontalAngleDeg, 0f);
         }
     }
 
@@ -132,8 +132,9 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
     private void UpdateReloadPosition()
     {
         if (reLoading)
-        {
-            FreeFall(reloadPos);
+        {   
+            CannonState state = stateHandler.getCannonState(); // Michael: added getCannonState and + state.Height vector in FreeFall argument
+            FreeFall(reloadPos + new Vector3(0, state.height, 0));
 
             if(gameObject.transform.position.y <= cannonHeight)
             {

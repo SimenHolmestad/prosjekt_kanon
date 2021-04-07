@@ -34,12 +34,20 @@ public class ChangeGoalYPosition : MonoBehaviour, IPointerClickHandler, CannonSt
 
     private void OnMouseDown()
     {
-        this.changeSpeed(this.deltaValue);
+        // Michael: added !hasLanded condition (and getCannonState)
+        CannonState state = stateHandler.getCannonState();
+        if(!state.hasLanded){ 
+            this.changeSpeed(this.deltaValue);
+        }
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        this.changeSpeed(this.deltaValue);
+        // Michael: added !hasLanded condition (and getCannonState)
+        CannonState state = stateHandler.getCannonState();
+        if(!state.hasLanded){ 
+            this.changeSpeed(this.deltaValue);
+        }
     }
 
     public void applyChange(CannonState state){
