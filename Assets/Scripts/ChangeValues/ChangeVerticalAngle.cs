@@ -11,8 +11,8 @@ public class ChangeVerticalAngle : MonoBehaviour, IPointerClickHandler, CannonSt
     [SerializeField]
     private float deltaValue;
 
-    private float highestValue = 70.0f;
-    private float lowestValue = 20.0f;
+    private float highestValue = 60.0f;
+    private float lowestValue = 30.0f;
 
     private void changeHorizontalAngle(float increment_value) {
         CannonState state = stateHandler.getCannonState();

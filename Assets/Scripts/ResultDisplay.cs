@@ -13,7 +13,11 @@ public class ResultDisplay : MonoBehaviour, CannonStateObserver
 
     public void applyChange(CannonState state){
         if (state.hasLanded) {
+            gameObject.SetActive(true); //
             this.updateDisplay(state.isCorrect());
+        }
+        else{
+            gameObject.SetActive(false); //
         }
     }
 

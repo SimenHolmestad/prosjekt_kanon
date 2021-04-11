@@ -12,15 +12,15 @@ public class Oppgave1C : LevelInterface
         state.levelName = "Oppgave 1C";
         // Variable: vertical angle
         state.verticalAngleIsLocked = false;
-        state.verticalAngleSolution_1 = (float)rnd.Next(30, 45);
+        state.verticalAngleSolution_1 = (float)rnd.Next(30, 42);
+        // ^ max 42 deg is important to avoid rounding errors
         state.verticalAngleSolution_2 = 90 - state.verticalAngleSolution_1; 
-        // NB! ^ requires theta_max > (90 - theta_min)
         // Given: (2D) speed, x-position of goal
-        state.speed = (float)rnd.Next(100, 200)/10;
+        state.speed = (float)rnd.Next(180, 280)/10;
         state.speedSolution = state.speed;
         state.goalXPosition = (float)Math.Pow(state.speed, 2) * (float)Math.Sin(2*state.verticalAngleSolution_1 * (float)Math.PI/180) / state.gravConst;
         state.goalXPositionSolution = state.goalXPosition;
-        state.taskImagePath = "Images/hello-world";
+        state.taskImagePath = "Images/Oppgave1C";
 
         return state;
     }

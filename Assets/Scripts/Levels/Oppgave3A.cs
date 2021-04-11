@@ -12,15 +12,15 @@ public class Oppgave3A : LevelInterface
         state.levelName = "Oppgave 3A";
         // Variable: x-position of goal 
         state.xPositionIsLocked = false;
-        state.goalXPositionSolution = (float)rnd.Next(120, 400)/10;
+        state.goalXPositionSolution = (float)rnd.Next(300, 800)/10;
         // Given: (2D) height, vertical angle, speed
-        state.height = 3f; // Fixed value for predictable range
+        state.height = 3.0f; // Fixed value for predictable range
         state.heightSolution = state.height;
-        state.verticalAngle = (float)rnd.Next(30, 70);
+        state.verticalAngle = (float)rnd.Next(30, 60);
         state.verticalAngleSolution_1 = state.verticalAngle;
         state.speed = (float)Math.Sqrt(state.gravConst * (float)Math.Pow(state.goalXPositionSolution, 2) / (2 * state.height * (float)Math.Pow((float)Math.Sin(state.verticalAngle * (float)Math.PI/180), 2) + state.goalXPositionSolution * (float)Math.Sin(2*state.verticalAngle * (float)Math.PI/180)));
         state.speedSolution = state.speed;
-        state.taskImagePath = "Images/hello-world";
+        state.taskImagePath = "Images/Oppgave3A";
         
         return state;
     }

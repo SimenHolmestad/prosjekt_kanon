@@ -9,6 +9,7 @@ public class LevelHandler
     {
 
         this.levels = new List<LevelInterface>();
+        this.levels.Add(new Oppgave0());
         this.levels.Add(new Oppgave1A());
         this.levels.Add(new Oppgave1B());
         this.levels.Add(new Oppgave1C());

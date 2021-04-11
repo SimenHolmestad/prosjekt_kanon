@@ -7,37 +7,19 @@ public class Reload : MonoBehaviour, IPointerClickHandler
 {
     public KanonKule kanonKule;
     public CannonStateHandler stateHandler;
-    public CannonCylinder cannonCylinder;
-    public VelocityVector velocityVector;
-    public VelocityTriangle velocityTriangle;
-    public XYVelocityVector xyVelocityVector;
-    public ThetaPath thetaPath;
-    public PhiPath phiPath;
+    public CannonAndCoordinateSystemManager cannonAndCoordinateSystemManager;
 
     private void OnMouseDown()
     {
         this.kanonKule.Reload();
         this.stateHandler.resetLevel();
-
-        this.cannonCylinder.ReloadCannonCylinder(); 
-        this.velocityVector.ReloadVelocityVector();
-        this.velocityTriangle.ReloadVelocityTriangle();
-        this.xyVelocityVector.ReloadXYVelocityVector();
-        this.thetaPath.ReloadThetaPath();
-        this.phiPath.ReloadPhiPath();
-
+        this.cannonAndCoordinateSystemManager.ReloadMotion();
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         this.kanonKule.Reload();
         this.stateHandler.resetLevel();
-
-        this.cannonCylinder.ReloadCannonCylinder(); 
-        this.velocityVector.ReloadVelocityVector();
-        this.velocityTriangle.ReloadVelocityTriangle();
-        this.xyVelocityVector.ReloadXYVelocityVector();
-        this.thetaPath.ReloadThetaPath();
-        this.phiPath.ReloadPhiPath();
+        this.cannonAndCoordinateSystemManager.ReloadMotion();
     }
 }
