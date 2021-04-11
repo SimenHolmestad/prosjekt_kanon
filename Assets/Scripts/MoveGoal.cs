@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MoveGoal : MonoBehaviour, CannonStateObserver
 {
@@ -19,7 +20,13 @@ public class MoveGoal : MonoBehaviour, CannonStateObserver
 
     public void applyChange(CannonState state)
     {
-        goalPos = new Vector3(state.goalXPosition, startHeight, state.goalYPosition);
+        if(state.isCorrect()){
+            goalPos = new Vector3(state.goalXPositionSolution, startHeight, state.goalYPositionSolution);
+        }
+        else{
+            goalPos = new Vector3(state.goalXPosition, startHeight, state.goalYPosition);
+        }
+
         gameObject.transform.position = goalPos;
     }
 }

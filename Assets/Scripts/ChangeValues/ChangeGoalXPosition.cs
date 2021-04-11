@@ -11,11 +11,23 @@ public class ChangeGoalXPosition : MonoBehaviour, IPointerClickHandler, CannonSt
     [SerializeField]
     private float deltaValue;
 
-    private float highestValue = 50.0f;
-    private float lowestValue = 1.0f;
+    private float highestValue;
+    private float lowestValue;
+    private float maxRadius = 109.0f;
+    private float minRadius = 19.0f;
 
     private void changeSpeed(float increment_value) {
         CannonState state = stateHandler.getCannonState();
+        // v Limits goal position to a 90 deg cone from the origin (centered at the x-axis)
+        this.highestValue = (float)Math.Sqrt(Math.Pow(maxRadius, 2) - Math.Pow(state.goalYPosition, 2));
+        if ((float)Math.Abs(state.goalYPosition) >= minRadius / (float)Math.Sqrt(2)){
+            this.lowestValue = (float)Math.Abs(state.goalYPosition);
+        }
+        else{
+            this.lowestValue = (float)Math.Sqrt(Math.Pow(minRadius, 2) - Math.Pow(state.goalYPosition, 2));
+        }
+
+
         float newXpos = state.goalXPosition + increment_value;
         if (newXpos >= this.lowestValue && newXpos <= this.highestValue) {
             state.goalXPosition = newXpos;
@@ -58,5 +70,6 @@ public class ChangeGoalXPosition : MonoBehaviour, IPointerClickHandler, CannonSt
     {
         stateHandler.subscribe(this);
         this.applyChange(this.stateHandler.getCannonState());
+
     }
 }

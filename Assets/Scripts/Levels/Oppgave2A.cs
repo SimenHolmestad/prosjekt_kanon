@@ -13,8 +13,13 @@ public class Oppgave2A : LevelInterface
         // Variable: x- and y-position of goal 
         state.xPositionIsLocked = false;
         state.yPositionIsLocked = false;
-        float tempAngle = (float)rnd.Next(0, 90) - 45f; 
-        float tempDist =  (float)rnd.Next(100, 350);
+        float tempAngle = (float)rnd.Next(20, 40); 
+        // Choice of direction:
+        int sign = rnd.Next(1, 3);
+        if(sign == 1){
+            tempAngle = -tempAngle;
+        }
+        float tempDist =  (float)rnd.Next(300, 800);
         state.goalXPositionSolution = (float)Math.Ceiling(tempDist * (float)Math.Cos(tempAngle * (float)Math.PI/180)) / 10;
         if (tempAngle < 0) { 
             state.goalYPositionSolution = (float)Math.Ceiling(tempDist * (float)Math.Sin(tempAngle * (float)Math.PI/180)) / 10; 
@@ -25,11 +30,11 @@ public class Oppgave2A : LevelInterface
         // Given: (3D) horizontal angle, vertical angle, speed 
         state.horizontalAngle = (float)Math.Atan2(state.goalYPositionSolution, state.goalXPositionSolution) * 180/(float)Math.PI;
         state.horizontalAngleSolution = state.horizontalAngle;
-        state.verticalAngle = (float)rnd.Next(30, 70);
+        state.verticalAngle = (float)rnd.Next(30, 60);
         state.verticalAngleSolution_1 = state.verticalAngle;
         state.speed = (float)Math.Sqrt(state.gravConst * state.goalXPositionSolution / ((float)Math.Sin(2*state.verticalAngle * (float)Math.PI/180) * (float)Math.Cos(state.horizontalAngle * (float)Math.PI/180)));
         state.speedSolution = state.speed;
-        state.taskImagePath = "Images/SampleImage";
+        state.taskImagePath = "Images/Oppgave2A";
         state.isThreeD = true;
         
         return state;

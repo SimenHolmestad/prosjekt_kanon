@@ -11,12 +11,46 @@ public class ChangeGoalYPosition : MonoBehaviour, IPointerClickHandler, CannonSt
     [SerializeField]
     private float deltaValue;
 
-    private float highestValue = 20.0f;
-    private float lowestValue = -20.0f;
+    private float highestValue;
+    private float lowestValue;
+    private float maxRadius = 109.0f;
+    private float minRadius = 19.0f;
 
     private void changeSpeed(float increment_value) {
         CannonState state = stateHandler.getCannonState();
+
         float newYpos = state.goalYPosition + increment_value;
+
+        // v Limits goal position to a 90 deg cone from the origin (centered at the x-axis)
+        if (newYpos >= 0){
+            if (state.goalXPosition <= maxRadius / (float)Math.Sqrt(2)){
+                this.highestValue = state.goalXPosition;
+            }
+            else{
+                this.highestValue = (float)Math.Sqrt(Math.Pow(maxRadius, 2) - Math.Pow(state.goalXPosition, 2));
+            }
+            if (state.goalXPosition < minRadius){
+                this.lowestValue = (float)Math.Sqrt(Math.Pow(minRadius, 2) - Math.Pow(state.goalXPosition, 2));
+            }
+            else{
+                this.lowestValue = 0;
+            }
+        }
+        else{
+            if (state.goalXPosition <= maxRadius / (float)Math.Sqrt(2)){
+                this.lowestValue = -state.goalXPosition;
+            }
+            else{
+                this.lowestValue = -(float)Math.Sqrt(Math.Pow(maxRadius, 2) - Math.Pow(state.goalXPosition, 2));
+            }
+            if (state.goalXPosition < minRadius){
+                this.highestValue = -(float)Math.Sqrt(Math.Pow(minRadius, 2) - Math.Pow(state.goalXPosition, 2));
+            }
+            else{
+                this.highestValue = 0;
+            }
+        }
+
         if (newYpos >= this.lowestValue && newYpos <= this.highestValue) {
             state.goalYPosition = newYpos;
         }

@@ -11,8 +11,8 @@ public class ChangeSpeed : MonoBehaviour, IPointerClickHandler, CannonStateObser
     [SerializeField]
     private float deltaValue;
 
-    private float highestValue = 50.0f;
-    private float lowestValue = 5.0f;
+    private float highestValue = 35.0f;
+    private float lowestValue = 15.0f;
 
     private void changeSpeed(float increment_value) {
         CannonState state = stateHandler.getCannonState();
