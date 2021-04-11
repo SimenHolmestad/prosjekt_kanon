@@ -15,6 +15,7 @@ public class CannonAndCoordinateSystemManager : MonoBehaviour, CannonStateObserv
     public VelocityVector velocityVector;
     public XYVelocityVector xyVelocityVector; 
     public VelocityTriangle velocityTriangle; 
+    public AudioSource reloadSound;   //make sure you assign an actual clip here in the inspector
     
     private bool acceptReload = false;
     private bool reloadCannon = false; 
@@ -110,6 +111,7 @@ public class CannonAndCoordinateSystemManager : MonoBehaviour, CannonStateObserv
     public void ReloadMotion(){  // allows reload-level-button to reload cannon (if accepting)
         if (acceptReload){
             this.reloadCannon = true;
+            reloadSound.Play();
         }
     }
 

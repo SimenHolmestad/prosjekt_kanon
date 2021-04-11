@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Shoot : MonoBehaviour, IPointerClickHandler
 {
-    public KanonKule kanonKule;
+    public KanonKule kanonKule; 
 
     private void OnMouseDown()
     {

@@ -7,6 +7,8 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
 {
     public CannonStateHandler stateHandler;
 
+    public AudioSource cannonSound;   //make sure you assign an actual clip here in the inspector
+
     private bool isMoving = false;
     private float totalTime = 0.0f;
     private float initSpeed; // Initial speed in m/s
@@ -95,6 +97,7 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
     {
         if(gameObject.transform.position == startPos)
         {
+            cannonSound.Play();
             isMoving = true;
             this.setHasLanded(false);
         }
