@@ -147,6 +147,8 @@ public class CannonAndCoordinateSystemManager : MonoBehaviour, CannonStateObserv
             waitTime += Time.deltaTime; 
             currentSpeed = oldSpeed + waitTime/waitLength * (state.speed - oldSpeed); // rescales speed continuously
             this.UpdateCannon(actualAngle, state.horizontalAngle, state.height, currentSpeed, state.isThreeD);
+            //reloadSound.Stop();
+            reloadSound.Play();
         }
         else if (actualAngle >= 0f && waitTime > waitLength){
             actualAngle += rotSpeed * Time.deltaTime;

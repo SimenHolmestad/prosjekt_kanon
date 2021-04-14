@@ -7,7 +7,8 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
 {
     public CannonStateHandler stateHandler;
 
-    public AudioSource cannonSound;   //make sure you assign an actual clip here in the inspector
+    public AudioSource cannonSound;  
+    public AudioSource flyingSound;  
 
     private bool isMoving = false;
     private float totalTime = 0.0f;
@@ -98,6 +99,7 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
         if(gameObject.transform.position == startPos)
         {
             cannonSound.Play();
+            flyingSound.Play();
             isMoving = true;
             this.setHasLanded(false);
         }
@@ -114,6 +116,7 @@ public class KanonKule : MonoBehaviour, CannonStateObserver
                 this.setHasLanded(true);
                 isMoving = false;
                 totalTime = 0;
+                flyingSound.Stop();
             }
         }
     }
