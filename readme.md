@@ -18,3 +18,18 @@ Som en del av applikasjonen er det laget et dokument som inneholder brukermanual
 # Promovideo
 En promovideo av applikasjonen finnes her: <https://youtu.be/5lnUgqCKE-U>.
 
+# Hvordan kjøre applikasjonen på maskinen uten VR-briller
+
+For å kjøre applikasjonen på pc-skjermen (uten VR-briller) må du gå inn i Unity og deaktivere disse to spill-objektene:
+
+- OVRPlayerController
+- UIHelpers
+
+Deretter aktiverer du disse spill-objektene:
+
+- CameraObject
+- FirstPersonPlayer
+- Bird Camera
+- Bullet Camera (under "Bullet")
+
+Du kan så trykke på play-knappen i Unity for å starte programmet. Det burde nå være mulig å styre personen med piltastene og trykke på knapper med musepekeren. (knapper du vanligvis ville brukt laseren til å trykke på)
